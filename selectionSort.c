@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void TriWithSelection (int tab[] ,int numberOfElements);
-
+void selectionSort (int tab[], int numberOfElements);
 int main(){
     int tab[100];
     int i,j,temp,n;
@@ -17,8 +17,8 @@ int main(){
         scanf("%d",&tab[i]);
     }
    
-    TriWithSelection(tab,n); // Tri function Call
-
+    //TriWithSelection(tab,n); // Tri function Call
+     selectionSort(tab,n);
     printf("\n\nThe Sorted Table is: \n");
     printf("\n{ ");
     for(i = 0; i < n ; i++){
@@ -40,4 +40,23 @@ void TriWithSelection (int tab[] ,int numberOfElements){
         }
        
     }
+}
+
+void selectionSort (int tab[], int numberOfElements)
+{
+  int i = 0 ; int  j , minIndex,temp;
+  while(i < numberOfElements)
+  {
+    minIndex = i;
+    for(j = i+1 ; j < numberOfElements ; j++){
+        if(tab[j] < tab[minIndex])
+        {
+            minIndex = j;
+        }
+    }
+    temp = tab[minIndex];
+    tab[minIndex] = tab[i];
+    tab[i] = temp;
+    i++;
+  }
 }
